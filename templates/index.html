@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 EduBot - AI Academic Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <h1>EduBot</h1>
+                </div>
+                <p class="tagline">Your AI Academic Assistant for Machine Learning & AI</p>
+            </div>
+        </header>
+
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome Message -->
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <p>👋 Hello! I'm EduBot, your AI academic assistant. I'm here to help you with:</p>
+                            <ul>
+                                <li>🤖 Machine Learning concepts and algorithms</li>
+                                <li>📊 Model evaluation and metrics calculations</li>
+                                <li>🐍 Python ML libraries and tools</li>
+                                <li>🚀 AI/ML career guidance</li>
+                                <li>🎓 Academic questions and explanations</li>
+                            </ul>
+                            <p>What would you like to learn about today?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input-container">
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Ask me anything about AI/ML..." maxlength="500">
+                    <button id="sendButton">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="input-suggestions">
+                    <button class="suggestion-btn" onclick="sendSuggestion('What is machine learning?')">
+                        What is machine learning?
+                    </button>
+                    <button class="suggestion-btn" onclick="sendSuggestion('Calculate accuracy for 85 correct out of 100')">
+                        Calculate accuracy
+                    </button>
+                    <button class="suggestion-btn" onclick="sendSuggestion('Career in AI')">
+                        Career guidance
+                    </button>
+                    <button class="suggestion-btn" onclick="sendSuggestion('Python ML libraries')">
+                        Python ML libraries
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+            <span>EduBot is thinking...</span>
+        </div>
+    </div>
+
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="floating-icon"><i class="fas fa-brain"></i></div>
+        <div class="floating-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="floating-icon"><i class="fas fa-code"></i></div>
+        <div class="floating-icon"><i class="fas fa-robot"></i></div>
+        <div class="floating-icon"><i class="fas fa-graduation-cap"></i></div>
+    </div>
+
+    <script>
+        // Chat functionality
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+
+        // Send message function
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            // Add user message to chat
+            addMessage(message, 'user');
+            messageInput.value = '';
+
+            // Show loading indicator
+            showLoading();
+
+            try {
+                // Send message to backend
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                const data = await response.json();
+                
+                // Hide loading indicator
+                hideLoading();
+
+                // Add bot response to chat
+                addMessage(data.response, 'bot');
+            } catch (error) {
+                hideLoading();
+                addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+                console.error('Error:', error);
+            }
+        }
+
+        // Add message to chat
+        function addMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.innerHTML = sender === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+
+            const content = document.createElement('div');
+            content.className = 'message-content';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            
+            // Format message with basic markdown support
+            const formattedMessage = formatMessage(message);
+            bubble.innerHTML = formattedMessage;
+
+            content.appendChild(bubble);
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Format message with basic markdown support
+        function formatMessage(message) {
+            return message
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+                .replace(/`(.*?)`/g, '<code>$1</code>')
+                .replace(/•/g, '•');
+        }
+
+        // Show loading indicator
+        function showLoading() {
+            loadingIndicator.style.display = 'flex';
+            setTimeout(() => {
+                loadingIndicator.style.opacity = '1';
+            }, 10);
+        }
+
+        // Hide loading indicator
+        function hideLoading() {
+            loadingIndicator.style.opacity = '0';
+            setTimeout(() => {
+                loadingIndicator.style.display = 'none';
+            }, 300);
+        }
+
+        // Send suggestion
+        function sendSuggestion(suggestion) {
+            messageInput.value = suggestion;
+            sendMessage();
+        }
+
+        // Event listeners
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Auto-resize input
+        messageInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            messageInput.focus();
+            
+            // Add some animation delays to floating icons
+            const floatingIcons = document.querySelectorAll('.floating-icon');
+            floatingIcons.forEach((icon, index) => {
+                icon.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+    </script>
+</body>
+</html>
