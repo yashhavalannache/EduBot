@@ -1,6 +1,3 @@
-# ==========================================
-# ✅ 1. train_model.py — Model Training Code
-# ==========================================
 
 import nltk
 import json

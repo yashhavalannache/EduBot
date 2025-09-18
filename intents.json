@@ -19,6 +19,22 @@
       ]
     },
     {
+  "tag": "linear_regression",
+  "patterns": [
+    "What is linear regression?",
+    "Explain linear regression",
+    "Tell me about linear regression",
+    "Define linear regression",
+    "How does linear regression work?"
+  ],
+  "responses": [
+    "Linear regression is a statistical method used to model the relationship between a dependent variable and one or more independent variables. 📈",
+    "It fits a straight line (y = mx + c) to data, minimizing the difference between predicted and actual values. Great for predicting trends! 🔮",
+    "Imagine plotting your data and drawing the best possible straight line through the points—that's linear regression! 🎯",
+    "It helps in understanding how one variable affects another, like how study hours impact your marks! 🎓📊"
+  ]
+},
+    {
       "tag": "definition_ai",
       "patterns": [
         "What is AI",
@@ -77,6 +93,72 @@
       ]
     },
     {
+  "tag": "unit_1_syllabus",
+  "patterns": [
+    "What is in Unit 1?",
+    "Tell me the syllabus of Unit 1",
+    "Give details of AI Unit 1",
+    "Explain Unit I of AI and ML",
+    "Topics covered in Unit 1"
+  ],
+  "responses": [
+    "**Unit I – Introduction to Artificial Intelligence**\n\n- Introduction to AI, brief history\n- What is AI, strong vs weak methods\n- Uses and limitations\n\n**Knowledge Representation**\n- Need for good representation\n- Semantic nets, Frames\n- Search Spaces, Semantics Trees, Search Trees\n- Combinatorial Explosion\n- Problem Reduction, Goal Trees"
+  ]
+},
+{
+  "tag": "unit_2_syllabus",
+  "patterns": [
+    "What is in Unit 2?",
+    "Tell me the syllabus of Unit 2",
+    "Topics of Unit 2 in AI",
+    "Explain Unit 2 AI ML",
+    "Give Unit II contents"
+  ],
+  "responses": [
+    "**Unit II – Search Methodologies**\n\n- Problem solving as search, data-driven & goal-driven search\n- Generate and test, Properties of search methods\n- Depth First Iterative Deepening\n- Heuristics, Hill Climbing, Best-First Search\n- Identifying Optimal Paths\n- Constraint Satisfaction Problem\n- **Aspects of No Code AI**"
+  ]
+},
+{
+  "tag": "unit_3_syllabus",
+  "patterns": [
+    "What is in Unit 3?",
+    "Tell me Unit 3 syllabus",
+    "Topics under AI Unit 3",
+    "Give details of Unit III",
+    "Unit 3 of AI ML subject"
+  ],
+  "responses": [
+    "**Unit III – Game Playing & Introduction to ML-I**\n\n- Game Trees, Minimax, Alpha-beta pruning\n- Training Rote Learning\n- Learning Concepts\n- General-to-Specific Ordering, Version Spaces\n- Candidate Elimination, Decision Tree Induction\n- The Problem of Overfitting\n- Reinforcement Learning\n- Nearest Neighbor and K-Nearest Neighbor Algorithms"
+  ]
+},
+{
+  "tag": "unit_4_syllabus",
+  "patterns": [
+    "What’s in Unit 4?",
+    "Tell me about Unit 4 syllabus",
+    "Topics in Unit 4 AI",
+    "Explain Unit IV of AI and ML",
+    "Give me syllabus for Unit 4"
+  ],
+  "responses": [
+    "**Unit IV – Introduction to ML-II & Neural Networks**\n\n- Linear Regression, Support Vector Machine\n- Clustering (K-means), PCA (Principal Component Analysis)\n- Neural Networks: Neurons, Perceptrons\n- Multilayer Neural Networks\n- Backpropagation Algorithms\n- Recurrent and Unsupervised Learning Networks"
+  ]
+},
+{
+  "tag": "unit_5_syllabus",
+  "patterns": [
+    "What does Unit 5 cover?",
+    "Give me Unit 5 syllabus",
+    "Explain Unit 5 of AI",
+    "Topics of last unit in AI ML",
+    "AI syllabus Unit 5 details"
+  ],
+  "responses": [
+    "**Unit V – Ensemble Methods & Bayesian Networks**\n\n- Bootstrapping & Cross Validation\n- Bagging, Gradient Boosting, Random Forests, Boosting\n\n**Bayesian Concepts**\n- Probabilistic Reasoning\n- Bayesian Networks\n- Bayes’ Theorem, Simple Bayesian Concept Learning\n- The Noisy-V Function\n- Naive Bayes, Optimal Classifier"
+  ]
+},
+
+    {
       "tag": "supervised_vs_unsupervised",
       "patterns": ["Difference between supervised and unsupervised learning", "Supervised vs unsupervised learning", "Compare supervised and unsupervised"],
       "responses": [
@@ -84,6 +166,23 @@
         "🎓 **Key Differences:**\n• **Data Requirements:** Supervised needs labeled data (expensive to obtain), Unsupervised works with unlabeled data\n• **Learning Approach:** Supervised learns from examples with correct answers, Unsupervised discovers patterns independently\n• **Applications:** Supervised for prediction tasks, Unsupervised for exploration and pattern discovery\n• **Evaluation:** Supervised can be objectively measured, Unsupervised evaluation is more subjective\n• **Complexity:** Supervised problems are generally easier to define, Unsupervised problems require more domain expertise"
       ]
     },
+    
+    {
+  "tag": "suggest_study_plan",
+  "patterns": [
+    "Suggest a study plan",
+    "Give me a 5-day crash course plan",
+    "How should I prepare in 5 days?",
+    "AI ML exam is near, help me prepare",
+    "Study timetable for AI ML",
+    "Create a study plan for upcoming exam"
+  ],
+  "responses": [
+    "**📅 5-Day AI & ML Crash Course Plan**\n\n🔥 Let's go full throttle. One unit a day!\n\n**Day 1 – Unit I: AI Basics & Knowledge Representation**\n• Read: History of AI, Strong vs Weak methods\n• Focus on: Semantic Nets, Search Trees, Frames\n• Practice short notes 💡\n\n**Day 2 – Unit II: Search Methods & No Code AI**\n• Understand: DFS, BFS, Hill Climbing, Best-First\n• Solve 2-3 constraint satisfaction problems\n• Highlight real-life No Code tools 🛠️\n\n**Day 3 – Unit III: Game Playing & ML-I**\n• Revise Minimax, Alpha-Beta\n• Learn: Decision Trees, Overfitting, Nearest Neighbors\n• Try a YouTube visual for Reinforcement Learning 🎥\n\n**Day 4 – Unit IV: ML-II & Neural Networks**\n• Crack: Linear Regression, SVM, PCA\n• Focus on: Backpropagation, Perceptrons\n• Draw neural diagrams 🧠\n\n**Day 5 – Unit V: Ensemble Methods & Bayes**\n• Memorize: Bagging, Boosting, Random Forests\n• Understand: Naive Bayes, Bayes Theorem, Noisy-V\n• End with 1-page unit-wise recap 📝\n\n**💪 Pro Tip:**\nTake breaks, drink water, revise late night or early morning based on your peak focus time.\n\n****"
+  ]
+},
+
+  
     {
       "tag": "deep_learning",
       "patterns": ["What is deep learning", "Explain deep learning", "Deep learning vs machine learning", "Neural networks", "Deep neural networks"],
